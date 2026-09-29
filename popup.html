@@ -8,31 +8,37 @@
   :root { color-scheme: light; }
   body { width: 340px; margin: 0; font: 14px/1.5 system-ui, sans-serif; color:#171717; background:#fff; }
   header { padding:16px 18px 12px; border-bottom:1px solid #eee; }
-  h1 { margin:0; font-size:20px; }
-  .sub { color:#777; font-size:12px; }
+  h1 { margin:0; font-size:20px; } .sub { color:#777; font-size:12px; }
   main { padding:16px 18px 18px; }
-  .context { padding:10px 12px; background:#f6f6f6; border-radius:10px; margin-bottom:12px; }
+  .context,.settings { padding:10px 12px; background:#f6f6f6; border-radius:10px; margin-bottom:12px; }
   .label { color:#777; font-size:11px; text-transform:uppercase; }
-  #page-title { font-weight:600; margin-top:2px; }
-  #selection { color:#555; margin-top:4px; word-break:break-all; }
+  #page-title { font-weight:600; margin-top:2px; } #selection { color:#555; margin-top:4px; word-break:break-all; }
   input { width:100%; box-sizing:border-box; padding:10px 11px; border:1px solid #ccc; border-radius:8px; font:inherit; }
   button { width:100%; margin-top:8px; padding:10px 12px; border:0; border-radius:8px; background:#171717; color:white; font-weight:600; cursor:pointer; }
   button.secondary { background:#eee; color:#171717; }
   .chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
   .chip { width:auto; margin:0; padding:7px 10px; background:#f0f0f0; color:#222; font-weight:500; }
+  label.toggle { display:flex; align-items:center; gap:8px; cursor:pointer; }
+  label.toggle input { width:auto; }
+  .hint { color:#777; font-size:11px; margin-top:5px; }
   footer { padding:10px 18px 14px; color:#888; font-size:11px; }
 </style>
 </head>
 <body>
-<header>
-  <h1>FURIPE Scout</h1>
-  <div class="sub">街・店・カルチャーからフリペを掘る</div>
-</header>
+<header><h1>FURIPE Scout</h1><div class="sub">街・店・カルチャーからフリペを掘る</div></header>
 <main>
   <div class="context">
     <div class="label">Current page</div>
     <div id="page-title">読み込み中…</div>
     <div id="selection"></div>
+  </div>
+  <div class="settings">
+    <div class="label">表示設定</div>
+    <label class="toggle">
+      <input id="exclude-jobs" type="checkbox" checked>
+      <span>求人情報誌を表示しない</span>
+    </label>
+    <div class="hint">「求人」ジャンルの媒体だけを除外します。地域情報誌は求人記事を含んでいても残します。</div>
   </div>
   <input id="query" placeholder="例：新宿 / 音楽 / アート / 温泉">
   <button id="search">FURIPEで探す</button>
